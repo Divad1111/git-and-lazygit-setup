@@ -1,0 +1,21 @@
+  - key: 'e'
+    context: 'files'
+    description: 'Edit file / resolve conflict with Beyond Compare'
+    command: 'git lgedit -- {{.SelectedFile.Name | quote}}'
+    output: terminal
+    after:
+      checkForConflicts: true
+  - key: '<c-b>'
+    context: 'files'
+    description: 'Beyond Compare: selected conflict'
+    command: 'git mt -y -- {{.SelectedFile.Name | quote}}'
+    output: terminal
+    after:
+      checkForConflicts: true
+  - key: '<f7>'
+    context: 'files'
+    description: 'Beyond Compare: all conflicts'
+    command: 'git mt -y'
+    output: terminal
+    after:
+      checkForConflicts: true

@@ -1,0 +1,14 @@
+# Lazygit 自定义命令
+# 配置路径: %LOCALAPPDATA%\lazygit\config.yml
+customCommands:
+  - key: '<c-b>'
+    context: 'files'
+    description: '使用 Beyond Compare 解决选中文件的冲突'
+    command: 'git mergetool --tool=bc --no-prompt -- {{.SelectedFile.Name | quote}}'
+    output: terminal
+
+  - key: '<c-m>'
+    context: 'files'
+    description: '使用 Beyond Compare 处理所有冲突'
+    command: 'git mergetool --tool=bc --no-prompt'
+    output: terminal

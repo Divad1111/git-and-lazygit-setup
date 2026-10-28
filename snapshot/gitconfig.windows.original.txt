@@ -1,0 +1,53 @@
+[core]
+	editor = 'D:/Program Files/Microsoft VS Code/Code.exe' --wait
+	longpaths = true
+	autocrlf = false
+[user]
+	name = zhangwei
+	email = zhangwei@qixia.com
+[credential]
+	helper = manager-core
+[safe]
+	directory = *
+[init]
+	defaultBranch = main
+[fetch]
+	prune = true
+[pull]
+	ff = only
+[diff]
+	algorithm = histogram
+	tool = bc
+[color]
+	ui = auto
+[merge]
+	conflictStyle = diff3
+	tool = bc
+[rerere]
+	enabled = true
+[difftool "bc"]
+	path = C:/Program Files (x86)/Beyond Compare/BCompare.exe
+	cmd = \"C:/Program Files (x86)/Beyond Compare/BCompare.exe\" -solo \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[mergetool "bc"]
+	path = C:/Program Files (x86)/Beyond Compare/BCompare.exe
+	cmd = \"C:/Program Files (x86)/Beyond Compare/BCompare.exe\" -solo \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+	trustExitCode = false
+[mergetool]
+	keepBackup = true
+[alias]
+	st = status -sb
+	hist = log --graph --oneline --decorate --all -30
+	last = log -1 --stat
+	ds = diff --staged
+	dc = diff --check
+	rv = "!f() { cd -- \"${GIT_PREFIX:-.}\" && MSYS2_ARG_CONV_EXCL=\"*\" \"C:/Users/DZQ-901/AppData/Local/Programs/Python/Python312/python.exe\" \"D:/GitTools/codex-git-rv/git-rv.py\" \"$@\"; }; f"
+	unstage = restore --staged
+	branches = branch -vv
+	ui = !lazygit
+	mt = mergetool --tool=bc
+	graph = "!f() { \"/c/Program Files/TortoiseGit/bin/TortoiseGitProc.exe\" /command:revisiongraph \"/path:$(cygpath -w \"$(git rev-parse --show-toplevel)\")\" & }; f"
+	fh = "!f() { test -n \"$1\" || { echo \"用法: git fh <文件或目录>\"; return 1; }; local path; path=$(cygpath -w \"$(realpath \"$1\")\") || return 1; \"/c/Program Files/TortoiseGit/bin/TortoiseGitProc.exe\" /command:log \"/path:$path\" & }; f"
+[rv]
+	tempRoot = D:/GitTemp
